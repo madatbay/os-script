@@ -1,0 +1,23 @@
+#!/bin/sh
+
+. /etc/init.d
+
+[ -f /usr/local/sbin/task3.sh ] || exit 0
+
+case "$1" in
+	start)
+		echo "Tasks run ---"
+	        /usr/local/sbin/task3.sh &
+       		echo "------------"
+ 		touch /var/lock/subsys/runtasks
+		;;
+	stop)
+		echo "Tasks stopping ----"
+		killall -q -9 runtasks.sh &
+		rm -f /var/lock/subsys/runtasks
+		;;
+	*)
+		echo "start, stop"
+		exit 1
+esac
+exit 0
