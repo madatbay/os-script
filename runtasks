@@ -2,13 +2,13 @@
 
 . /etc/init.d
 
-[ -f /usr/local/sbin/task3.sh ] || exit 0
+[ -f /usr/local/sbin/runtasks.sh ] || exit 0
 
 case "$1" in
 	start)
 		echo "Tasks run ---"
-	        /usr/local/sbin/task3.sh &
-       		echo "------------"
+		/usr/local/sbin/runtasks.sh &
+		echo "------------"
  		touch /var/lock/subsys/runtasks
 		;;
 	stop)
